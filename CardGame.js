@@ -24,11 +24,14 @@ class CardPlayer {
  
  // // CREATE TWO NEW CardPlayers
  
- const player1 = new CardPlayer('Buddy');
- const player2 = new CardPlayer('Ree');
+const player1 = new CardPlayer('Buddy');
+const player2 = new CardPlayer('Ree');
  
+let cardsDealt = 0;
 
 const renderCard = function(card) {
+
+    cardsDealt++;
 
     const divEl = document.createElement("div");
 
@@ -41,7 +44,8 @@ const renderCard = function(card) {
     const divText2Node = document.createTextNode(`${suitCodes[card.suit]}`);
     divEl.appendChild(divText2Node);
 
-    divEl.id = "rcorners2";
+    divEl.className = "rcorners";
+    divEl.tabIndex = cardsDealt;
 
     if (card.suit === 'hearts' || card.suit === 'diamonds') {
         divEl.style.color = 'red';
@@ -87,6 +91,8 @@ const drawACard = function() {
     return cardDeck[cardNumber];
 
 }
+
+
 
 renderHTML('h1', `${player1.name}'s hand`);
 
