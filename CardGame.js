@@ -46,10 +46,25 @@ const renderCard = function(card) {
 
     divEl.className = "rcorners";
     divEl.tabIndex = cardsDealt;
+    divEl.style.background = 'white';
 
     if (card.suit === 'hearts' || card.suit === 'diamonds') {
         divEl.style.color = 'red';
     }
+
+    divEl.addEventListener("click", (event) => {
+
+        if ( divEl.style.background === 'white') {
+        
+            divEl.style.background = 'lightblue';
+
+        } else {
+
+            divEl.style.background = 'white';
+
+        }
+
+    }); 
 
     const body = document.getElementsByTagName('body')[0];
     body.appendChild(divEl);
