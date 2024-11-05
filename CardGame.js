@@ -28,7 +28,7 @@ const player1 = new CardPlayer('Buddy');
 const player2 = new CardPlayer('Ree');
  
 let cardsDealt = 0;
-const selectedCards = [];
+let selectedCards = [];
 
 const renderCard = function(card) {
 
@@ -60,27 +60,25 @@ const renderCard = function(card) {
         
             divEl.style.background = 'lightblue';
 
-            selectedCards.push(card.id);
+            selectedCards.push(card);
 
-            if (selectedCards.length > 2) {
+            if (selectedCards.length > 4) {
 
-                document.getElementById(selectedCards[0]).style.background = "white";
+                document.getElementById(selectedCards[0].id).style.background = "white";
         
                 selectedCards.shift();
 
-                selectedCards.forEach((element) => console.log(`elements: ${element}`));
-            
             }        
 
         } else {
 
             divEl.style.background = 'white';
 
+            selectedCards = selectedCards.filter((scard) => scard.id !== card.id);
+
         }
 
     }); 
-
-   
 
     const body = document.getElementsByTagName('body')[0];
     body.appendChild(divEl);
@@ -142,5 +140,3 @@ for (let i = 0; i < 6; i++) {
     renderCard(player2.hand[i]);
 
 }
-
-selectedCards.forEach((element) => console.log(element));
