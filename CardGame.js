@@ -62,7 +62,7 @@ const renderCard = function(card) {
 
             selectedCards.push(card);
 
-            if (selectedCards.length > 4) {
+            if (selectedCards.length > 2) {
 
                 document.getElementById(selectedCards[0].id).style.background = "white";
         
@@ -111,7 +111,7 @@ const drawACard = function() {
 
         counter++;
 
-        console.log(`${counter}: ${cardNumber}`);
+        //console.log(`${counter}: ${cardNumber}`);
 
     }
 
@@ -121,7 +121,7 @@ const drawACard = function() {
 
 }
 
-
+//Start tyhe game, start rendering the page
 
 renderHTML('h1', `${player1.name}'s hand`);
 
