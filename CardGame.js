@@ -28,6 +28,7 @@ const player1 = new CardPlayer('Buddy');
 const player2 = new CardPlayer('Ree');
  
 let cardsDealt = 0;
+const selectedCards = [];
 
 const renderCard = function(card) {
 
@@ -45,6 +46,7 @@ const renderCard = function(card) {
     divEl.appendChild(divText2Node);
 
     divEl.className = "rcorners";
+    divEl.id = card.id;
     divEl.tabIndex = cardsDealt;
     divEl.style.background = 'white';
 
@@ -54,9 +56,21 @@ const renderCard = function(card) {
 
     divEl.addEventListener("click", (event) => {
 
-        if ( divEl.style.background === 'white') {
+        if (divEl.style.background === 'white') {
         
             divEl.style.background = 'lightblue';
+
+            selectedCards.push(card.id);
+
+            if (selectedCards.length > 2) {
+
+                document.getElementById(selectedCards[0]).style.background = "white";
+        
+                selectedCards.shift();
+
+                selectedCards.forEach((element) => console.log(`elements: ${element}`));
+            
+            }        
 
         } else {
 
@@ -65,6 +79,8 @@ const renderCard = function(card) {
         }
 
     }); 
+
+   
 
     const body = document.getElementsByTagName('body')[0];
     body.appendChild(divEl);
@@ -126,3 +142,5 @@ for (let i = 0; i < 6; i++) {
     renderCard(player2.hand[i]);
 
 }
+
+selectedCards.forEach((element) => console.log(element));

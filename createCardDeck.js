@@ -44,6 +44,7 @@ const getDeck = () => {
         val: value,
         displayVal: displayVal.toString(),
         suit: suits[index],
+        id: `${displayVal.toString()}of${suits[index]}`
       }
 
       deck.push(card);
